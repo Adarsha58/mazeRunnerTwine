@@ -13,8 +13,8 @@
 [[Enter the maze-&gt;Room 1]]
 [[Keep running!-&gt;Failed]]
 
-(set: $keyToRoom9 to false)
-(set: $stepsRemaining to 11)</tw-passagedata><tw-passagedata pid="2" name="Room 1" tags="" position="148,169" size="200,100">(if: $stepsRemaining is 0)[(set: $stepsRemaining to 11)
+(set: $haskey8 to false)
+(set: $stepsRemaining to 11)</tw-passagedata><tw-passagedata pid="2" name="Room 1" tags="" position="148,169" size="200,100">(if: $stepsRemaining &lt;= 0)[(set: $stepsRemaining to 11)(set: $haskey8 to false)
 You&#39;ve used all steps. Try again!]
 	
 
@@ -27,7 +27,8 @@ You can only go [[south-&gt;Room 2]]
 
 StepsRemaining: $stepsRemaining
 (set: $stepsRemaining to $stepsRemaining-1)</tw-passagedata><tw-passagedata pid="3" name="Failed" tags="" position="150,25" size="100,100">Unforutunately, you didnt make it. But there is still a chance. Do you want to try to go to maze again? 
-[[Restart the Game-&gt;Intro]]</tw-passagedata><tw-passagedata pid="4" name="Room 2" tags="" position="149,374" size="200,100">You are currently in the room 2. 
+[[Restart the Game-&gt;Intro]]</tw-passagedata><tw-passagedata pid="4" name="Room 2" tags="" position="149,374" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
+You are currently in the room 2. 
 
 			[[north-&gt;Room 1]] 
 			[[east-&gt;Room 5]]
@@ -36,51 +37,53 @@ StepsRemaining: $stepsRemaining
 
 StepsRemaining: $stepsRemaining
 (set: $stepsRemaining to $stepsRemaining-1)
-[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]</tw-passagedata><tw-passagedata pid="5" name="Room 5" tags="" position="500,375" size="200,100">You are currently in room 5. 
+</tw-passagedata><tw-passagedata pid="5" name="Room 5" tags="" position="500,375" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
+You are currently in room 5. 
 			[[west-&gt;Room 2]]
 			[[north-&gt;Room 6]]
 			[[south-&gt;Room 4]]
 
 StepsRemaining: $stepsRemaining
-(set: $stepsRemaining to $stepsRemaining-1)
-[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]</tw-passagedata><tw-passagedata pid="6" name="Room 6" tags="" position="503,198" size="200,100">You are currently in Room 6. 
+(set: $stepsRemaining to $stepsRemaining-1)</tw-passagedata><tw-passagedata pid="6" name="Room 6" tags="" position="503,198" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
+You are currently in Room 6. 
 
 You can either go [[south-&gt;Room 5]] or [[east-&gt;Room 7]]
 
 StepsRemaining: $stepsRemaining
-(set: $stepsRemaining to $stepsRemaining-1)
-[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]</tw-passagedata><tw-passagedata pid="7" name="Room 4" tags="" position="498,553" size="200,100">You are in the room 4. 
+(set: $stepsRemaining to $stepsRemaining-1)</tw-passagedata><tw-passagedata pid="7" name="Room 4" tags="" position="498,554" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
+You are in the room 4. 
 
 [[west-&gt;Room 3]]
 [[north-&gt;Room 5]]
 			
 StepsRemaining: $stepsRemaining
 (set: $stepsRemaining to $stepsRemaining-1)
-[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]</tw-passagedata><tw-passagedata pid="8" name="Room 3" tags="" position="150,549" size="200,100">This is Room 3. There is no where to go except to go back where you came from. 
+</tw-passagedata><tw-passagedata pid="8" name="Room 3" tags="" position="150,547" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
+This is Room 3. There is no where to go except to go back where you came from. 
 
-You are lucky that there is a key required to unlock Room 9.
-(link: &quot;Pick it up!&quot;)[(set: $haskey8 to true)]
+(if: $haskey8 is false)[You are lucky that there is a key required to unlock Room 9.
+(link: &quot;Pick it up!&quot;)[(set: $haskey8 to true)]]
 
 [[go back-&gt;Room 4]]
 
 StepsRemaining: $stepsRemaining
 (set: $stepsRemaining to $stepsRemaining-1)
-[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]</tw-passagedata><tw-passagedata pid="9" name="Room 7" tags="" position="824,175" size="200,100">You are currently in Room 7. 
+</tw-passagedata><tw-passagedata pid="9" name="Room 7" tags="" position="824,175" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
+You are currently in Room 7. 
 
 	[[west-&gt;Room 6]] 
 	[[south-&gt;Room 8]]
 	[[east-&gt;Room 1]]
 	
 StepsRemaining: $stepsRemaining
-(set: $stepsRemaining to $stepsRemaining-1)
-[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]</tw-passagedata><tw-passagedata pid="10" name="Room 8" tags="" position="825,375" size="200,100">You are currently in Room 8. 
+(set: $stepsRemaining to $stepsRemaining-1)</tw-passagedata><tw-passagedata pid="10" name="Room 8" tags="" position="824,374" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
+You are currently in Room 8. 
 				   [[north-&gt;Room 7]]
 (if: $haskey8 is true)[Yay! You found the key. You can go [[south-&gt;Room 9]]]
 (else:)[You need to find a key to go south.]
 
 StepsRemaining: $stepsRemaining
-(set: $stepsRemaining to $stepsRemaining-1)
-[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]</tw-passagedata><tw-passagedata pid="11" name="Room 9" tags="" position="800,550" size="200,100">[(if: $stepsRemaining is 0)[(goto: &quot;Room 1&quot;)]]
+(set: $stepsRemaining to $stepsRemaining-1)</tw-passagedata><tw-passagedata pid="11" name="Room 9" tags="" position="800,550" size="200,100">[(if: $stepsRemaining &lt;= 0)[(goto: &quot;Room 1&quot;)]]
 You are currently in Room 9. 
 
 			Go [[north-&gt;Room 8]]
